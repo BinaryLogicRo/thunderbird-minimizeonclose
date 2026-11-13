@@ -14,7 +14,7 @@ Output: `dist/minimizeonclose.xpi`. The version comes from the `VERSION` file.
 
 ## 2. Block update checks
 
-The manifest's `update_url` points to a reserved `.invalid` domain that nobody can register, so Thunderbird never takes updates for this add-on from addons.thunderbird.net or anywhere else.
+The manifest's `update_url` points to `https://binarylogic.ro/minimizeonclose.json`, so Thunderbird looks for updates to this add-on only there, never on addons.thunderbird.net. No update is offered unless that file is published.
 
 To stop Thunderbird from even attempting the daily check, create `policies.json` in the `distribution` folder of the Thunderbird install folder (for example `~/Applications/thunderbird/distribution/policies.json`; for a system package, `/etc/thunderbird/policies/policies.json`):
 
