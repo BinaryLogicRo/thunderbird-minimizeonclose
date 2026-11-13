@@ -16,12 +16,15 @@ SRCFILES := $(shell find src -type f \
 	-not -name '.*' \
 	)
 
-build/version.txt: .git/index $(SRCFILES) LICENSE
-	mkdir -p "$(@D)"
-	git describe --match='v[0-9]*' --dirty=+ | sed -e 's/^v//g' > "$@"
+# The add-on version is read from the VERSION file at the repository root.
+VERSION := $(strip $(shell cat VERSION 2>/dev/null))
+ifeq ($(VERSION),)
+$(error VERSION file is missing or empty)
+endif
 
-build/manifest.json: src/manifest.json build/version.txt
-	sed -e "s/__BUILD_version__/$(shell cat build/version.txt)/g" "$<" > "$@"
+build/manifest.json: src/manifest.json VERSION
+	mkdir -p "$(@D)"
+	sed -e "s/__BUILD_version__/$(VERSION)/g" "$<" > "$@"
 
 dist/minimizeonclose.xpi: $(SRCFILES) build/manifest.json LICENSE
 	mkdir -p "$(@D)"
@@ -30,9 +33,9 @@ dist/minimizeonclose.xpi: $(SRCFILES) build/manifest.json LICENSE
 	cd build ; zip -9X "../$@" manifest.json
 	zip -9X "$@" LICENSE
 
-build/unsupported/manifest.json: src/manifest.json build/version.txt
+build/unsupported/manifest.json: src/manifest.json VERSION
 	mkdir -p "$(@D)"
-	sed -e "s/__BUILD_version__/$(shell cat build/version.txt)-unsupported/g" \
+	sed -e "s/__BUILD_version__/$(VERSION)-unsupported/g" \
 	    -e 's/"strict_max_version": "[^"]*"/"strict_max_version": "*"/g' \
 	    "$<" > "$@"
 

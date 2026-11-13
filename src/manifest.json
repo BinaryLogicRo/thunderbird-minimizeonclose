@@ -2,9 +2,10 @@
   "manifest_version": 2,
   "applications": {
     "gecko": {
-      "id": "minimizeonclose@rsjtdrjgfuzkfg.com",
+      "id": "minimizeonclose@binarylogic.ro",
+      "update_url": "https://binarylogic.ro/minimizeonclose.json",
       "strict_min_version": "128.0",
-      "strict_max_version": "153.*"
+      "strict_max_version": "*"
     }
   },
   "name": "Minimize on Close",
