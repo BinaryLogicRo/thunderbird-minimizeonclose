@@ -11,7 +11,7 @@
   "name": "Minimize on Close @binarylogic.ro",
   "description": "Causes Thunderbird's main window to minimize instead of closing. You can still close Thunderbird through the menu.",
   "version": "__BUILD_version__",
-  "author": "rsjtdrjgfuzkfg",
+  "author": "BinaryLogicRo",
   "icons": {
     "64": "icon.png"
   },
