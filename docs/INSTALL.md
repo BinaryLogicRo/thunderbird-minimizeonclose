@@ -10,7 +10,7 @@ cd thunderbird-minimizeonclose
 make
 ```
 
-Output: `dist/minimizeonclose.xpi`. The version comes from the `VERSION` file.
+Output: `dist/minimizeonclose.xpi`. The version comes from the `VERSION` file (`MAJOR.MINOR.PATCH`).
 
 ## 2. Block update checks
 

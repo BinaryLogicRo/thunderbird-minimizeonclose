@@ -16,10 +16,11 @@ SRCFILES := $(shell find src -type f \
 	-not -name '.*' \
 	)
 
-# The add-on version is read from the VERSION file at the repository root.
+# The add-on version is read from the VERSION file at the repository root,
+# in semantic versioning format: MAJOR.MINOR.PATCH (no pre-release suffix).
 VERSION := $(strip $(shell cat VERSION 2>/dev/null))
-ifeq ($(VERSION),)
-$(error VERSION file is missing or empty)
+ifeq ($(shell echo '$(VERSION)' | grep -Ex '(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)'),)
+$(error VERSION must be MAJOR.MINOR.PATCH, got "$(VERSION)")
 endif
 
 build/manifest.json: src/manifest.json VERSION
