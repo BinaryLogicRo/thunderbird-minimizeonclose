@@ -19,3 +19,10 @@ Every time changes are made to the repository, provide a brief commit message fo
 ## Authorship
 
 Never add co-authors or contributors to the repository. This includes `Co-Authored-By:` or similar trailers in commit messages, attribution lines in pull requests, and author or contributor entries in any file.
+
+## Reference documents
+
+- [docs/INSTALL.md](docs/INSTALL.md): building, blocking update checks, and installing the add-on in Thunderbird.
+- [docs/SECURITY_ASSESSMENT.md](docs/SECURITY_ASSESSMENT.md): security and reliability review of the add-on.
+
+Refer to them only when they provide context or instructions needed for the current task or question.
